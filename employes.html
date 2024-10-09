@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="employee-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: rgb(67, 70, 247);
+    color: white;
+    padding: 20px;
+    min-height: 50vh;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 24px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px;
+    margin-left: 3px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: lightblue;
+    border-radius: 30px;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h1, h4 {
+    color: #333;
+}
+h1 {
+    margin: 20px 0;
+    color: #333;
+}
+
+
+
+
+.sick-leave {
+    background-color: #ffcccc; /* Light red for sick leave */
+}
+
+.paid-leave {
+    background-color: #ccffcc; /* Light green for paid leave */
+}
+
+.attended {
+    background-color: #cce5ff; /* Light blue for attended days */
+}
+
+.weekend {
+    background-color: #e0e0e0; /* Gray for weekends */
+}
+#attendance-summary {
+    margin-top: 20px;
+}
+
+#summary p {
+    margin: 5px 0;
+}
+.profile-info, .performance-info {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Pie Chart Styling */
+canvas {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+.performance-chart {
+    text-align: center;
+}
+
+</style>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Employee Dashboard</h2>
+            <ul>
+                <li><a href="#profile-section"><h3>Your Profile</h3></a></li>
+                <li><a href="#attendance-section"><h3>Attendance</h3></a></li>
+                <li><a href="#performance-section"><h3>Performance</h3></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Profile Section -->
+            <section id="profile-section">
+                <h1>Your Profile</h1>
+                <div class="profile-info">
+                    <h4>Employee Name: Alice Smith</h4>
+                    <p>Team Leader: Sarah Johnson</p>
+                </div>
+            </section>
+
+            <!-- Attendance Section -->
+            <section id="attendance-section">
+                <div id="attendance-summary">
+                    <h2>Attendance Summary</h2>
+                    <p>Days Attended: 18</p>
+                    <p>Sick Leave: 2</p>
+                    <p>Paid Leave: 1</p>
+                </div>
+            </section>
+
+            <!-- Performance Section -->
+            <section id="performance-section">
+                <h1>Your Performance</h1>
+                <div class="performance-info">
+                    <div class="performance-chart">
+                        <h4>Task Performance</h4>
+                        <canvas id="performancePieChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- JavaScript for Pie Chart -->
+    <script>
+        // Employee Task Performance Chart
+        const ctx = document.getElementById('performancePieChart').getContext('2d');
+        const performancePieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Completed Tasks', 'Ongoing Tasks', 'Pending Tasks'],
+                datasets: [{
+                    label: 'Task Performance',
+                    data: [15, 5, 2], // Example data for employee performance
+                    backgroundColor: ['#36a2eb', '#ffcd56', '#ff6384'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

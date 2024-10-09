@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js library -->
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Admin Dashboard</h2>
+            
+            <ul>
+                <li><a href="#team-section"><h3>Team Leaders & Members</h3></a></li>
+                <li><a href="#attendance-section"><h3>Attendance</h3></a></li>
+                <li><a href="#task-section"><h3>Task Progress</h3></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Team Leaders & Members -->
+            <section id="team-section">
+                <h1>Team Leaders & Members</h1>
+                <div class="team-list">
+                    <div class="team">
+                        <h4>Team Leader 1: Sarah Johnson</h4>
+                        <ul>
+                            <li>Member 1: Alice Smith</li>
+                            <li>Member 2: David Brown</li>
+                            <li>Member 3: Emily Davis</li>
+                        </ul>
+                    </div>
+                    <div class="team">
+                        <h4>Team Leader 2: Michael Thompson</h4>
+                        <ul>
+                            <li>Member A: Olivia Harris</li>
+                            <li>Member B: James Wilson</li>
+                            <li>Member C: Sophia Lewis</li>
+                        </ul>
+                    </div>
+                    <div class="team">
+                        <h4>Team Leader 3: Jessica Walker</h4>
+                        <ul>
+                            <li>Member 1: Daniel Martinez</li>
+                            <li>Member 2: Laura Clark</li>
+                            <li>Member 3: Ethan Hall</li>
+                        </ul>
+                    </div>
+                    <div class="team">
+                        <h4>Team Leader 4: William Lee</h4>
+                        <ul>
+                            <li>Member 1: Chloe Turner</li>
+                            <li>Member 2: Christopher Moore</li>
+                            <li>Member 3: Grace Young</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container">
+                <h1>Attendance Calendar - October 2024</h1>
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Calendar data will be generated here by JavaScript -->
+                    </tbody>
+                </table>
+                <div id="attendance-summary">
+                    <h2>Attendance Summary</h2>
+                    <div id="summary"></div>
+                </div>
+            </div>
+
+            <!-- Task Progress Section with Pie Charts for Each Team -->
+            <section id="task-section">
+                <h1>Task Progress</h1>
+                <div class="pie-chart-container"> <!-- Added this div -->
+                    <!-- Team 1 Pie Chart -->
+                    <div class="team-task-chart">
+                        <h4>Team 1 Task Details: Sarah Johnson's Team</h4>
+                        <canvas id="team1PieChart"></canvas> <!-- Team 1 pie chart -->
+                    </div>
+            
+                    <!-- Team 2 Pie Chart -->
+                    <div class="team-task-chart">
+                        <h4>Team 2 Task Details: Michael Thompson's Team</h4>
+                        <canvas id="team2PieChart"></canvas> <!-- Team 2 pie chart -->
+                    </div>
+            
+                    <!-- Team 3 Pie Chart -->
+                    <div class="team-task-chart">
+                        <h4>Team 3 Task Details: Jessica Walker's Team</h4>
+                        <canvas id="team3PieChart"></canvas> <!-- Team 3 pie chart -->
+                    </div>
+            
+                    <!-- Team 4 Pie Chart -->
+                    <div class="team-task-chart">
+                        <h4>Team 4 Task Details: William Lee's Team</h4>
+                        <canvas id="team4PieChart"></canvas> <!-- Team 4 pie chart -->
+                    </div>
+                </div>
+            </section>
+            
+
+    <!-- JavaScript for Chart.js Pie Charts -->
+    <script>
+        // Team 1 Pie Chart
+        const ctx1 = document.getElementById('team1PieChart').getContext('2d');
+        const team1PieChart = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Assigned Tasks', 'Completed Tasks', 'Ongoing Tasks'],
+                datasets: [{
+                    label: 'Team 1 Task Progress',
+                    data: [12, 8, 4], // Example data for Team 1
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+
+        // Team 2 Pie Chart
+        const ctx2 = document.getElementById('team2PieChart').getContext('2d');
+        const team2PieChart = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['Assigned Tasks', 'Completed Tasks', 'Ongoing Tasks'],
+                datasets: [{
+                    label: 'Team 2 Task Progress',
+                    data: [15, 10, 5], // Example data for Team 2
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+
+        // Team 3 Pie Chart
+        const ctx3 = document.getElementById('team3PieChart').getContext('2d');
+        const team3PieChart = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Assigned Tasks', 'Completed Tasks', 'Ongoing Tasks'],
+                datasets: [{
+                    label: 'Team 3 Task Progress',
+                    data: [20, 15, 5], // Example data for Team 3
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+
+        // Team 4 Pie Chart
+        const ctx4 = document.getElementById('team4PieChart').getContext('2d');
+        const team4PieChart = new Chart(ctx4, {
+            type: 'pie',
+            data: {
+                labels: ['Assigned Tasks', 'Completed Tasks', 'Ongoing Tasks'],
+                datasets: [{
+                    label: 'Team 4 Task Progress',
+                    data: [10, 7, 3], // Example data for Team 4
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
